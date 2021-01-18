@@ -1,5 +1,7 @@
 #!/bin/bash
 
+command -v clang-format >/dev/null 2>&1 || { echo >&2 "WARNING: Cannot format C++ files using clang-format because it's not installed.  Skipping."; exit 0; }
+
 STYLE=$(git config --get hooks.clangformat.style)
 if [ -n "${STYLE}" ] ; then
   STYLEARG="-style=${STYLE}"
